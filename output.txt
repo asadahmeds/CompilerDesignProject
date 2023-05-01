@@ -1,0 +1,219 @@
+
+Tokens:
+
+keyword          : int
+identifier       : a
+other            : ;
+keyword          : long
+identifier       : b
+other            : ,
+identifier       : c
+other            : ;
+keyword          : int
+identifier       : calc_sum
+other            : (
+keyword          : float
+identifier       : x
+other            : ,
+keyword          : float
+identifier       : y
+other            : )
+other            : {
+keyword          : int
+identifier       : sum
+other            : ;
+identifier       : sum
+other            : =
+identifier       : x
+other            : +
+identifier       : y
+other            : ;
+keyword          : return
+identifier       : sum
+other            : ;
+other            : }
+keyword          : int
+identifier       : is_digit
+other            : (
+keyword          : char
+identifier       : ch
+other            : )
+other            : {
+keyword          : return
+identifier       : ch
+other            : >=
+numeric_constant : 0
+other            : &&
+identifier       : ch
+other            : <=
+numeric_constant : 9
+other            : ;
+other            : }
+keyword          : int
+identifier       : main
+other            : (
+other            : )
+other            : {
+keyword          : int
+identifier       : a
+other            : ,
+identifier       : b
+other            : ;
+identifier       : a
+other            : =
+identifier       : calc_sum
+other            : (
+numeric_constant : 5
+other            : ,
+numeric_constant : 6.5
+other            : )
+other            : ;
+identifier       : b
+other            : =
+identifier       : is_digit
+other            : (
+character_constant: 'x'
+other            : )
+other            : ;
+keyword          : return
+numeric_constant : 0
+other            : ;
+other            : }
+
+Parse Tree:
+
+root
+    variable_declaration
+        type_name
+            keyword:int
+        identifier:a
+        ;
+    variable_declaration
+        type_name
+            keyword:long
+        identifier:b
+        ,
+        identifier:c
+        ;
+    function_definition
+        type_name
+            keyword:int
+        identifier:calc_sum
+        (
+        type_name
+            keyword:float
+        identifier:x
+        ,
+        type_name
+            keyword:float
+        identifier:y
+        )
+        compound_statement
+            {
+            variable_declaration
+                type_name
+                    keyword:int
+                identifier:sum
+                ;
+            expression_statement
+                assignment_expression
+                    identifier:sum
+                        identifier:sum
+                        assignment_operator
+                            =
+                        additive_expression
+                            primary_expression
+                                identifier:x
+                            +
+                            primary_expression
+                                identifier:y
+                ;
+            jump_statement
+                keyword:return
+                primary_expression
+                    identifier:sum
+                ;
+            }
+    function_definition
+        type_name
+            keyword:int
+        identifier:is_digit
+        (
+        type_name
+            keyword:char
+        identifier:ch
+        )
+        compound_statement
+            {
+            jump_statement
+                keyword:return
+                logical_and_expression
+                    relational_expression
+                        primary_expression
+                            identifier:ch
+                        >=
+                        constant
+                            numeric_constant:0
+                    &&
+                    relational_expression
+                        primary_expression
+                            identifier:ch
+                        <=
+                        constant
+                            numeric_constant:9
+                ;
+            }
+    function_definition
+        type_name
+            keyword:int
+        identifier:main
+        (
+        )
+        compound_statement
+            {
+            variable_declaration
+                type_name
+                    keyword:int
+                identifier:a
+                ,
+                identifier:b
+                ;
+            expression_statement
+                assignment_expression
+                    identifier:a
+                        identifier:a
+                        assignment_operator
+                            =
+                        postfix_expression
+                            primary_expression
+                                identifier:calc_sum
+                            (
+                            argument_list
+                                constant
+                                    numeric_constant:5
+                                ,
+                                constant
+                                    numeric_constant:6.5
+                            )
+                ;
+            expression_statement
+                assignment_expression
+                    identifier:b
+                        identifier:b
+                        assignment_operator
+                            =
+                        postfix_expression
+                            primary_expression
+                                identifier:is_digit
+                            (
+                            constant
+                                character_constant:'x'
+                            )
+                ;
+            jump_statement
+                keyword:return
+                constant
+                    numeric_constant:0
+                ;
+            }
+
